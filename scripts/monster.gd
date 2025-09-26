@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Monster
+
 enum Type {MONSTER, ATTRACTION}
 
 @export var type: Type

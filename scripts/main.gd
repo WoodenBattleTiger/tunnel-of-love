@@ -18,30 +18,37 @@ func on_patience_timer_timeout():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_A:
-			print("left")
-			$RightArea.monitoring = false
-			$LeftArea.monitoring = true
-			$LeftArea/CollisionShape2D/ColorRect.visible = true
-			$RightArea/CollisionShape2D/ColorRect.visible = false
-		if event.pressed and event.keycode == KEY_D:
-			print("right")
-			$RightArea.monitoring = true
-			$LeftArea.monitoring = false
-			$LeftArea/CollisionShape2D/ColorRect.visible = false
-			$RightArea/CollisionShape2D/ColorRect.visible = true
 		if event.pressed and event.keycode == KEY_SPACE:
-			$MonsterManager.spawn_monster()
+			print("flip")
+			$RightArea.monitoring = !$RightArea.monitoring
+			$LeftArea.monitoring = !$LeftArea.monitoring
+			$LeftArea/CollisionShape2D/ColorRect.visible = !$LeftArea/CollisionShape2D/ColorRect.visible
+			$RightArea/CollisionShape2D/ColorRect.visible = !$RightArea/CollisionShape2D/ColorRect.visible
+	if event.is_action_pressed("shoot"):
+		if get_viewport().get_mouse_position().x > get_viewport_rect().size.x / 2:
+			spawn_arrow(1)
+			print("shoot right")
+		else:
+			spawn_arrow(-1)
+			print("shoot left")
 			
+func spawn_arrow(dir):
+	var new_arrow = load("res://scenes/arrow.tscn").instantiate()
+	new_arrow.dir = dir
+	new_arrow.position.x = get_viewport_rect().size.x / 2
+	new_arrow.position.y = get_viewport_rect().size.y / 2
+	add_child(new_arrow)
+	
 func body_entered(body:Node2D):
 	print(body.name)
-	if !body.collected:
-		if body.type == body.Type.MONSTER:
-			update_patience(-15)
-			body.collected = true
-		else:
-			update_patience(15)
-			body.collected = true
+	if body is Monster:
+		if !body.collected:
+			if body.type == body.Type.MONSTER:
+				update_patience(-15)
+				body.collected = true
+			else:
+				update_patience(15)
+				body.collected = true
 	
 func update_patience(val):
 	patience += val
