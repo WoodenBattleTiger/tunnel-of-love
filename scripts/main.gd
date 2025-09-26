@@ -9,9 +9,7 @@ func _ready() -> void:
 	$Patience.value = patience
 	
 func on_patience_timer_timeout():
-	patience -= 0.5
-	#print(patience)
-	$Patience.value = patience
+	update_patience(-0.5)
 	patience_timer = get_tree().create_timer(1)
 	patience_timer.connect("timeout", on_patience_timer_timeout)
 
@@ -21,19 +19,35 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("left")
 			$RightArea.monitoring = false
 			$LeftArea.monitoring = true
-			$LeftArea/ColorRect.visible = true
-			$RightArea/ColorRect.visible = false
+			$LeftArea/CollisionShape2D/ColorRect.visible = true
+			$RightArea/CollisionShape2D/ColorRect.visible = false
 		if event.pressed and event.keycode == KEY_D:
 			print("right")
 			$RightArea.monitoring = true
 			$LeftArea.monitoring = false
-			$LeftArea/ColorRect.visible = false
-			$RightArea/ColorRect.visible = true
+			$LeftArea/CollisionShape2D/ColorRect.visible = false
+			$RightArea/CollisionShape2D/ColorRect.visible = true
 		if event.pressed and event.keycode == KEY_SPACE:
 			$MonsterManager.spawn_monster()
 			
 func body_entered(body:Node2D):
 	print(body.name)
-	patience -= 15
+	if !body.collected:
+		if body.type == body.Type.MONSTER:
+			update_patience(-15)
+			body.collected = true
+		else:
+			update_patience(15)
+			body.collected = true
+	
+func update_patience(val):
+	patience += val
+	if patience > 100:
+		patience = 100
+	
+	if patience <= 0:
+		patience = 0
+		print("game over!")
+	
 	$Patience.value = patience
 	

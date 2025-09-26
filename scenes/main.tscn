@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
-size = Vector2(546, 489.5)
+size = Vector2(254, 327.75)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
@@ -13,31 +13,31 @@ script = ExtResource("1_o5qli")
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(304, 400)
+position = Vector2(209, 483)
 shape = SubResource("RectangleShape2D_0wfyh")
 
-[node name="ColorRect" type="ColorRect" parent="LeftArea"]
+[node name="ColorRect" type="ColorRect" parent="LeftArea/CollisionShape2D"]
 visible = false
 modulate = Color(1, 1, 1, 0.29411766)
-offset_left = 31.0
-offset_top = 155.0
-offset_right = 579.0
-offset_bottom = 645.0
+offset_left = -127.0
+offset_top = -161.0
+offset_right = 129.0
+offset_bottom = 169.0
 
 [node name="RightArea" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(852, 400)
+position = Vector2(951, 486)
 shape = SubResource("RectangleShape2D_0wfyh")
 
-[node name="ColorRect" type="ColorRect" parent="RightArea"]
+[node name="ColorRect" type="ColorRect" parent="RightArea/CollisionShape2D"]
 visible = false
 modulate = Color(1, 1, 1, 0.29411766)
-offset_left = 577.0
-offset_top = 155.0
-offset_right = 1125.0
-offset_bottom = 645.0
+offset_left = -129.0
+offset_top = -167.0
+offset_right = 127.0
+offset_bottom = 163.0
 
 [node name="MonsterManager" type="Node2D" parent="."]
 script = ExtResource("2_0wfyh")
@@ -45,6 +45,7 @@ script = ExtResource("2_0wfyh")
 [node name="Patience" type="ProgressBar" parent="."]
 offset_right = 205.0
 offset_bottom = 27.0
+accessibility_name = "Patience"
 step = 0.5
 show_percentage = false
 

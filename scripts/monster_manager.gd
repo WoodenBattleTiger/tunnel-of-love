@@ -8,6 +8,11 @@ var right_spawn = Vector2(864, -10)
 func spawn_monster():
 	var new_monster = monster_scene.instantiate()
 	var spawn_side = randi_range(1,2)
+	var type = randi_range(1,2)
+	if type == 1:
+		new_monster.type = new_monster.Type.MONSTER
+	else:
+		new_monster.type = new_monster.Type.ATTRACTION
 	if spawn_side == 1:
 		new_monster.position = left_spawn
 	else:
