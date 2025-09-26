@@ -10,6 +10,11 @@ func _ready() -> void:
 	patience_timer.connect("timeout", on_patience_timer_timeout)
 	$Patience.value = patience
 	r.beats(4).connect(func(count): if count != 0: $MonsterManager.spawn_monster())
+	var resource = load("res://dialogue/test.dialogue")
+	# then
+	get_tree().paused = true
+	await DialogueManager.show_dialogue_balloon(resource, "start").tree_exited
+	get_tree().paused = false
 	
 func on_patience_timer_timeout():
 	update_patience(-0.5)

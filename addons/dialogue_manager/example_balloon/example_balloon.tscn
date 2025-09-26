@@ -64,6 +64,7 @@ MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
 [node name="ExampleBalloon" type="CanvasLayer"]
+process_mode = 3
 layer = 100
 script = ExtResource("1_36de5")
 
