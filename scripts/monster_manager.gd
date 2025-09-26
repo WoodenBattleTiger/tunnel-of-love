@@ -15,6 +15,7 @@ func spawn_monster():
 		new_monster.type = new_monster.Type.ATTRACTION
 	if spawn_side == 1:
 		new_monster.position = left_spawn
+		new_monster.dir = -1
 	else:
 		new_monster.position = right_spawn
 	
