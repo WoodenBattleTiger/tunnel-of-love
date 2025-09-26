@@ -75,6 +75,7 @@ func update_patience(val):
 	if patience <= 0:
 		patience = 0
 		print("game over!")
+		game_over()
 	
 	$Patience.value = patience
 	
@@ -89,4 +90,20 @@ func clear_combo():
 func update_score(val):
 	score += val * combo
 	$Score.text = "Score: " + str(score)
+	
+func game_over():
+	$GameOver.visible = true
+	get_tree().paused = true
+	
+func restart():
+	$GameOver.visible = false
+	get_tree().paused = false
+	clear_combo()
+	score = 0
+	$Score.text = "Score: " + str(score)
+	patience = 100
+	$AudioStreamPlayer.play(0.0)
+	for child in $MonsterManager.get_children():
+		child.queue_free()
+	#TODO: need to restart dialogue
 	
