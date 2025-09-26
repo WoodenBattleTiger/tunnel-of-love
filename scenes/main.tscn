@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
-[ext_resource type="AudioStream" uid="uid://b1fw18labfl2p" path="res://audio/120bpm_metro.mp3" id="3_sugp2"]
+[ext_resource type="AudioStream" uid="uid://dpec0xrw5kyok" path="res://audio/120_test.wav" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://7dgsbdt2ilfq" path="res://scenes/game_over.tscn" id="5_tbgi4"]
 
@@ -55,7 +55,7 @@ step = 0.5
 show_percentage = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_sugp2")
+stream = ExtResource("3_tbgi4")
 volume_db = -10.0
 autoplay = true
 
