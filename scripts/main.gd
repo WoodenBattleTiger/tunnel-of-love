@@ -1,5 +1,20 @@
 extends Node2D
 
+var patience = 100.0
+var patience_timer: SceneTreeTimer
+
+func _ready() -> void:
+	patience_timer = get_tree().create_timer(1)
+	patience_timer.connect("timeout", on_patience_timer_timeout)
+	$Patience.value = patience
+	
+func on_patience_timer_timeout():
+	patience -= 0.5
+	#print(patience)
+	$Patience.value = patience
+	patience_timer = get_tree().create_timer(1)
+	patience_timer.connect("timeout", on_patience_timer_timeout)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_A:
@@ -19,3 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 func body_entered(body:Node2D):
 	print(body.name)
+	patience -= 15
+	$Patience.value = patience
+	

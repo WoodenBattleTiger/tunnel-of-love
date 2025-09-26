@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 func _process(_delta: float) -> void:
 	
-	velocity.y = 100
+	velocity.y = 250
 	
 	move_and_slide()
 	
