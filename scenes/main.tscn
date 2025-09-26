@@ -45,8 +45,10 @@ mouse_filter = 2
 script = ExtResource("2_0wfyh")
 
 [node name="Patience" type="ProgressBar" parent="."]
-offset_right = 205.0
-offset_bottom = 27.0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 223.0
+offset_bottom = 43.0
 accessibility_name = "Patience"
 step = 0.5
 show_percentage = false
@@ -69,6 +71,27 @@ offset_left = 560.0
 offset_top = 308.0
 offset_right = 600.0
 offset_bottom = 348.0
+
+[node name="Combo" type="Label" parent="."]
+offset_left = 494.0
+offset_top = 15.0
+offset_right = 711.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 28
+text = "Combo: x1"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 46.0
+offset_right = 244.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 28
+text = "Score: 0"
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="LeftArea" to="." method="body_entered"]
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]
