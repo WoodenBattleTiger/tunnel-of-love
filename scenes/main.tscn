@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=6 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
+[ext_resource type="AudioStream" uid="uid://b1fw18labfl2p" path="res://audio/120bpm_metro.mp3" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="4_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(254, 327.75)
@@ -25,14 +27,12 @@ offset_right = 129.0
 offset_bottom = 169.0
 
 [node name="RightArea" type="Area2D" parent="."]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
 position = Vector2(951, 486)
 shape = SubResource("RectangleShape2D_0wfyh")
 
 [node name="ColorRect" type="ColorRect" parent="RightArea/CollisionShape2D"]
-visible = false
 modulate = Color(1, 1, 1, 0.29411766)
 offset_left = -129.0
 offset_top = -167.0
@@ -48,6 +48,19 @@ offset_bottom = 27.0
 accessibility_name = "Patience"
 step = 0.5
 show_percentage = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sugp2")
+volume_db = -10.0
+autoplay = true
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("4_jyhfs")
+bpm = 120.0
+beat_length = 0.5
+audio_stream_player = NodePath("../AudioStreamPlayer")
+running = true
+metadata/_custom_type_script = "uid://dos3qhffr4v0a"
 
 [connection signal="body_entered" from="LeftArea" to="." method="body_entered"]
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]

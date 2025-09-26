@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var r: RhythmNotifier = $RhythmNotifier 
+
 var patience = 100.0
 var patience_timer: SceneTreeTimer
 
@@ -7,6 +9,7 @@ func _ready() -> void:
 	patience_timer = get_tree().create_timer(1)
 	patience_timer.connect("timeout", on_patience_timer_timeout)
 	$Patience.value = patience
+	r.beats(4).connect(func(count): if count != 0: $MonsterManager.spawn_monster())
 	
 func on_patience_timer_timeout():
 	update_patience(-0.5)
