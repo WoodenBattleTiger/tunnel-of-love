@@ -23,6 +23,12 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 runtime/balloon_path="uid://73jm5qjy52vq"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
