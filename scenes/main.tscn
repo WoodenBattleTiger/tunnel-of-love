@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dlojhoj0vn1gb" path="res://scripts/audio_slider.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ctwu0qej2jku2" path="res://scripts/options.gd" id="7_tipki"]
 [ext_resource type="AudioStream" uid="uid://ccho04v8juv6h" path="res://audio/testtrack_120_verfinal.wav" id="9_og1vs"]
-[ext_resource type="AudioStream" uid="uid://cjglo5rwwddga" path="res://audio/120_transition_test.wav" id="10_gqmmt"]
+[ext_resource type="AudioStream" uid="uid://cuaw3ywiet6b2" path="res://audio/arrow_shoot_sfx_alt.wav" id="10_og1vs"]
 [ext_resource type="Texture2D" uid="uid://b83141tufb0vu" path="res://sprites/Patience Meter/PM Empty.png" id="11_muem4"]
 [ext_resource type="Texture2D" uid="uid://bysnjnb1vsi8w" path="res://sprites/Patience Meter/PM Overlay.png" id="12_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://c5yp3bda3kfg8" path="res://sprites/Patience Meter/PM Filled.png" id="13_0ld40"]
@@ -119,9 +119,10 @@ stream = ExtResource("9_og1vs")
 volume_db = -5.0
 bus = &"music"
 
-[node name="TransitionPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_gqmmt")
-volume_db = -5.0
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_og1vs")
+volume_db = -10.0
+bus = &"sfx"
 
 [node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("4_jyhfs")

@@ -43,7 +43,7 @@ func on_patience_timer_timeout():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_SPACE:
+		if event.is_pressed() and event.keycode == KEY_SPACE:
 			print("flip")
 			if face_right:
 				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_left.png")
@@ -72,6 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			spawn_arrow(-1)
 			print("shoot left")
 			$Level/Swan_Head.texture = swan_left_shoot
+		$SFXPlayer.play()
 			
 func spawn_arrow(dir):
 	var new_arrow = load("res://scenes/arrow.tscn").instantiate()
@@ -175,12 +176,14 @@ func _on_audio_stream_player_finished() -> void:
 			$AudioStreamPlayer.stream = load("res://audio/track2_130_final.wav")
 			$RhythmNotifier.bpm = 130
 			$AudioStreamPlayer.play()
+			$ShootTimer.wait_time = $RhythmNotifier.beat_length
 		
 		if phase == 3:
 			current_loop = 1
 			$AudioStreamPlayer.stream = load("res://audio/track3_140_verfinal.wav")
 			$RhythmNotifier.bpm = 140
 			$AudioStreamPlayer.play()
+			$ShootTimer.wait_time = $RhythmNotifier.beat_length
 	
 	else:
 		current_loop += 1

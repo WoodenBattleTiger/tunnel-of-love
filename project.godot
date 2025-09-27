@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tunnel Of Love"
-run/main_scene="uid://dp4umvlwbdhue"
+run/main_scene="uid://cy2by24f60obe"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -28,6 +28,8 @@ runtime/balloon_path="uid://73jm5qjy52vq"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+mouse_cursor/custom_image="uid://ch43vqqd0e3pf"
+mouse_cursor/custom_image_hotspot=Vector2(70, 63)
 
 [editor_plugins]
 
