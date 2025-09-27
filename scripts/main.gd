@@ -7,6 +7,9 @@ extends Node2D
 
 @export var patience_decay_rate = 0.5
 
+@export var phase_length = 180
+var phase = 1
+
 @onready var r: RhythmNotifier = $RhythmNotifier 
 
 var swan_left = preload("res://sprites/placeholders/placeholders/boat_aim_left.png")
@@ -24,10 +27,11 @@ var face_right = true
 
 func _ready() -> void:
 	var resource = load("res://dialogue/test.dialogue")
-	# then
 	get_tree().paused = true
 	await DialogueManager.show_dialogue_balloon(resource, "start").tree_exited
 	get_tree().paused = false
+	$PhaseTimer.wait_time = phase_length
+	$PhaseTimer.start()
 	$AudioStreamPlayer.play(0.0)
 	patience_timer = get_tree().create_timer(1)
 	patience_timer.connect("timeout", on_patience_timer_timeout)
@@ -44,15 +48,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed and event.keycode == KEY_SPACE:
 			print("flip")
 			if face_right:
-				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
-			else:
 				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_left.png")
+			else:
+				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
 			face_right = !face_right
 			$Level/Char_Date.scale.x *= -1
 			$RightArea.monitoring = !$RightArea.monitoring
 			$LeftArea.monitoring = !$LeftArea.monitoring
 			$LeftArea/CollisionShape2D/ColorRect.visible = !$LeftArea/CollisionShape2D/ColorRect.visible
 			$RightArea/CollisionShape2D/ColorRect.visible = !$RightArea/CollisionShape2D/ColorRect.visible
+			await get_tree().create_timer(1.5).timeout
+			$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player.png")
+			
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$UI/Options.visible = true
 			get_tree().paused = true
@@ -142,4 +149,16 @@ func restart():
 	for child in $MonsterManager.get_children():
 		child.queue_free()
 	#TODO: need to restart dialogue
+	
+func _on_phase_timer_timeout():
+	#next phase
+	phase += 1
+	$AudioStreamPlayer.stream = load("res://audio/120_transition_test.wav")
+	$AudioStreamPlayer.play()
+	await $AudioStreamPlayer.finished
+	
+	if phase == 2:
+		$AudioStreamPlayer.stream = load("res://audio/track2_130_ver2.wav")
+		$RhythmNotifier.bpm = 130
+		$AudioStreamPlayer.play()
 	
