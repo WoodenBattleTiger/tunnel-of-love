@@ -7,8 +7,9 @@ extends Node2D
 
 @export var patience_decay_rate = 0.5
 
-@export var phase_length = 180
+@export var phase_length = 1 #number of loops
 var phase = 1
+var current_loop = 1
 
 @onready var r: RhythmNotifier = $RhythmNotifier 
 
@@ -30,8 +31,6 @@ func _ready() -> void:
 	get_tree().paused = true
 	await DialogueManager.show_dialogue_balloon(resource, "start").tree_exited
 	get_tree().paused = false
-	$PhaseTimer.wait_time = phase_length
-	$PhaseTimer.start()
 	$AudioStreamPlayer.play(0.0)
 	patience_timer = get_tree().create_timer(1)
 	patience_timer.connect("timeout", on_patience_timer_timeout)
@@ -92,7 +91,7 @@ func _process(_delta: float) -> void:
 		#print("shoot left")
 	
 func body_entered(body:Node2D):
-	print(body.name)
+	#print(body.name)
 	if body is Monster:
 		if !body.collected:
 			if body.type == body.Type.MONSTER:
@@ -143,22 +142,36 @@ func restart():
 	get_tree().paused = false
 	clear_combo()
 	score = 0
+	phase = 1
+	current_loop = 1
 	%Score.text = "Score: " + str(score)
 	patience = 100
 	$AudioStreamPlayer.play(0.0)
 	for child in $MonsterManager.get_children():
 		child.queue_free()
 	#TODO: need to restart dialogue
+
+
+func _on_audio_stream_player_finished() -> void:
+	#check for next phase
+	if current_loop == phase_length:
+		print("phase over")
+		phase += 1
+		$TransitionPlayer.play()
+		await $TransitionPlayer.finished
 	
-func _on_phase_timer_timeout():
-	#next phase
-	phase += 1
-	$AudioStreamPlayer.stream = load("res://audio/120_transition_test.wav")
-	$AudioStreamPlayer.play()
-	await $AudioStreamPlayer.finished
+		if phase == 2:
+			current_loop = 1
+			$AudioStreamPlayer.stream = load("res://audio/track2_130_ver2.wav")
+			$RhythmNotifier.bpm = 130
+			$AudioStreamPlayer.play()
+		
+		if phase == 3:
+			current_loop = 1
+			$AudioStreamPlayer.stream = load("res://audio/track3_140_ver2.wav")
+			$RhythmNotifier.bpm = 140
+			$AudioStreamPlayer.play()
 	
-	if phase == 2:
-		$AudioStreamPlayer.stream = load("res://audio/track2_130_ver2.wav")
-		$RhythmNotifier.bpm = 130
+	else:
+		current_loop += 1
 		$AudioStreamPlayer.play()
-	
