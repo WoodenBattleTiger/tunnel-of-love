@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 
 func _on_resume_pressed():
 	visible = false

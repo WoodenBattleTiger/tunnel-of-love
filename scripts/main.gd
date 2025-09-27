@@ -27,20 +27,19 @@ var combo = 1
 var face_right = true
 
 func _ready() -> void:
+	$PatienceTimer.connect("timeout", on_patience_timer_timeout)
+	%Patience.value = patience
+	
 	var resource = load("res://dialogue/test.dialogue")
 	get_tree().paused = true
 	await DialogueManager.show_dialogue_balloon(resource, "start").tree_exited
 	get_tree().paused = false
 	$AudioStreamPlayer.play(0.0)
-	patience_timer = get_tree().create_timer(1)
-	patience_timer.connect("timeout", on_patience_timer_timeout)
-	%Patience.value = patience
+	
 	r.beats(4).connect(func(count): if count != 0: $MonsterManager.spawn_monster())
 	
 func on_patience_timer_timeout():
 	update_patience(patience_decay_rate * -1)
-	patience_timer = get_tree().create_timer(1)
-	patience_timer.connect("timeout", on_patience_timer_timeout)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -48,10 +47,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("flip")
 			if face_right:
 				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_left.png")
+				$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_photo_left.png")
 			else:
 				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
+				$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date.png")
 			face_right = !face_right
-			$Level/Char_Date.scale.x *= -1
+			#$Level/Char_Date.scale.x *= -1
 			$RightArea.monitoring = !$RightArea.monitoring
 			$LeftArea.monitoring = !$LeftArea.monitoring
 			$LeftArea/CollisionShape2D/ColorRect.visible = !$LeftArea/CollisionShape2D/ColorRect.visible
@@ -97,6 +98,15 @@ func body_entered(body:Node2D):
 			if body.type == body.Type.MONSTER:
 				update_patience(-1 * monster_patience_penalty)
 				body.collected = true
+				if face_right:
+					$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_shock_right.png")
+					await get_tree().create_timer(1.0, false).timeout
+					$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date.png")
+				else:
+					$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_shock_left.png")
+					await get_tree().create_timer(1.0, false).timeout
+					$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_photo_left.png")
+				
 			else:
 				update_patience(distraction_patience_bonus)
 				update_score(distraction_collect_bonus)
@@ -157,18 +167,18 @@ func _on_audio_stream_player_finished() -> void:
 	if current_loop == phase_length:
 		print("phase over")
 		phase += 1
-		$TransitionPlayer.play()
-		await $TransitionPlayer.finished
+		#$TransitionPlayer.play()
+		#await $TransitionPlayer.finished
 	
 		if phase == 2:
 			current_loop = 1
-			$AudioStreamPlayer.stream = load("res://audio/track2_130_ver2.wav")
+			$AudioStreamPlayer.stream = load("res://audio/track2_130_final.wav")
 			$RhythmNotifier.bpm = 130
 			$AudioStreamPlayer.play()
 		
 		if phase == 3:
 			current_loop = 1
-			$AudioStreamPlayer.stream = load("res://audio/track3_140_ver2.wav")
+			$AudioStreamPlayer.stream = load("res://audio/track3_140_verfinal.wav")
 			$RhythmNotifier.bpm = 140
 			$AudioStreamPlayer.play()
 	

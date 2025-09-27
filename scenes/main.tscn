@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=28 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://c58d1klujenvj" path="res://sprites/placeholders/placeholders/bg_floor.png" id="2_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dwjga3ww78nbo" path="res://sprites/placeholders/placeholders/bg_walls.png" id="3_choun"]
-[ext_resource type="AudioStream" uid="uid://cja46v0fe20bq" path="res://audio/testtrack_120_ver3.wav" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://dos3qhffr4v0a" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://diwap3tqqqfv4" path="res://sprites/placeholders/placeholders/boat_body.png" id="4_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cg34cqmbkf2ps" path="res://sprites/placeholders/placeholders/boat_idle.png" id="5_eb6dy"]
@@ -14,19 +13,38 @@
 [ext_resource type="Texture2D" uid="uid://s8jejuk5kq1u" path="res://sprites/placeholders/placeholders/chara_date.png" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://dlojhoj0vn1gb" path="res://scripts/audio_slider.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ctwu0qej2jku2" path="res://scripts/options.gd" id="7_tipki"]
+[ext_resource type="AudioStream" uid="uid://ccho04v8juv6h" path="res://audio/testtrack_120_verfinal.wav" id="9_og1vs"]
 [ext_resource type="AudioStream" uid="uid://cjglo5rwwddga" path="res://audio/120_transition_test.wav" id="10_gqmmt"]
 [ext_resource type="Texture2D" uid="uid://b83141tufb0vu" path="res://sprites/Patience Meter/PM Empty.png" id="11_muem4"]
 [ext_resource type="Texture2D" uid="uid://bysnjnb1vsi8w" path="res://sprites/Patience Meter/PM Overlay.png" id="12_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://c5yp3bda3kfg8" path="res://sprites/Patience Meter/PM Filled.png" id="13_0ld40"]
 [ext_resource type="Texture2D" uid="uid://uq5kqbqlstie" path="res://sprites/Patience Meter/Icon Neutral.png" id="14_0ld40"]
 [ext_resource type="FontFile" uid="uid://b6itnxdi4g5ec" path="res://fonts/Bebas_Neue/BebasNeue-Regular.ttf" id="16_0ld40"]
+[ext_resource type="Texture2D" uid="uid://brd3nk62sdhci" path="res://sprites/Pause Menu/Pause Menu BG.png" id="18_yc10j"]
+[ext_resource type="FontFile" uid="uid://buho8mxtdbp3r" path="res://fonts/Gaegu-Bold.ttf" id="20_jscy8"]
+[ext_resource type="FontFile" uid="uid://u1frrkgccc5x" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Regular.ttf" id="21_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://dvr7jdwhqyui" path="res://sprites/Pause Menu/Slider Button Idle.png" id="23_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://bt4qfq2jn7aks" path="res://sprites/Pause Menu/Slider Button Hover.png" id="24_vxglm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(453, 339.4375)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og1vs"]
+content_margin_top = 14.0
+bg_color = Color(0.27014354, 0.6707075, 0.6759358, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9515795, 0.95157963, 0.9515795, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 10
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
-monster_patience_penalty = 10
 patience_decay_rate = 0.75
 
 [node name="Level" type="Node2D" parent="."]
@@ -57,7 +75,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_trceg")
 
 [node name="Char_Date" type="Sprite2D" parent="Level"]
-position = Vector2(960, 540)
+position = Vector2(1175, 920)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_a8y0u")
 
@@ -97,7 +115,7 @@ script = ExtResource("2_0wfyh")
 [node name="BulletManager" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_tbgi4")
+stream = ExtResource("9_og1vs")
 volume_db = -5.0
 bus = &"music"
 
@@ -124,6 +142,9 @@ offset_bottom = 564.0
 unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
+
+[node name="PatienceTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -209,7 +230,7 @@ theme_override_font_sizes/font_size = 48
 text = "0 pts"
 horizontal_alignment = 2
 
-[node name="Options" type="Panel" parent="UI"]
+[node name="Options" type="TextureRect" parent="UI"]
 process_mode = 2
 visible = false
 custom_minimum_size = Vector2(520, 300)
@@ -219,13 +240,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -240.0
-offset_right = 260.0
-offset_bottom = 60.0
+offset_left = -347.5
+offset_top = -465.0
+offset_right = 347.5
+offset_bottom = 485.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("18_yc10j")
 script = ExtResource("7_tipki")
+
+[node name="MusicVolume" type="Label" parent="UI/Options"]
+custom_minimum_size = Vector2(290, 0)
+layout_mode = 0
+offset_left = 188.0
+offset_top = 490.0
+offset_right = 478.0
+offset_bottom = 526.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 35
+text = "music volume"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Options"]
 layout_mode = 1
@@ -234,7 +268,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_top = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Options/MarginContainer"]
 layout_mode = 2
@@ -244,36 +278,68 @@ theme_override_constants/separation = 8
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 35
 text = "Resume"
+flat = true
+
+[node name="Restart" type="Button" parent="UI/Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 35
+text = "Restart"
+flat = true
 
 [node name="Quit" type="Button" parent="UI/Options/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 35
 text = "Quit"
+flat = true
 
-[node name="MusicVolume" type="Label" parent="UI/Options/MarginContainer/VBoxContainer"]
+[node name="DefaultFont" type="Button" parent="UI/Options/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "Music Volume"
+theme_override_colors/font_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 35
+text = "Default"
+flat = true
+
+[node name="AltFont" type="Button" parent="UI/Options/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("21_pm3ni")
+theme_override_font_sizes/font_size = 30
+text = "Atkitson Hyperlegible"
+flat = true
 
 [node name="MusicSlider" type="HSlider" parent="UI/Options/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(256, 24)
+custom_minimum_size = Vector2(320, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
+theme_override_constants/grabber_offset = -32
+theme_override_icons/grabber = ExtResource("23_2wyq8")
+theme_override_icons/grabber_highlight = ExtResource("24_vxglm")
+theme_override_styles/slider = SubResource("StyleBoxFlat_og1vs")
 max_value = 1.0
 step = 0.001
 value = 1.0
 script = ExtResource("7_o6xl0")
 bus_name = "music"
-
-[node name="HSlider" type="HSlider" parent="UI"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
 
 [node name="GameOver" parent="." instance=ExtResource("5_tbgi4")]
 visible = false
