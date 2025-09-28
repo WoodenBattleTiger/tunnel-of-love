@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=29 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
@@ -25,6 +25,7 @@
 [ext_resource type="FontFile" uid="uid://u1frrkgccc5x" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Regular.ttf" id="21_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://dvr7jdwhqyui" path="res://sprites/Pause Menu/Slider Button Idle.png" id="23_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://bt4qfq2jn7aks" path="res://sprites/Pause Menu/Slider Button Hover.png" id="24_vxglm"]
+[ext_resource type="FontFile" uid="uid://cylphn78l5se6" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Bold.ttf" id="26_2wyq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(453, 339.4375)
@@ -232,7 +233,7 @@ text = "0 pts"
 horizontal_alignment = 2
 
 [node name="Options" type="TextureRect" parent="UI"]
-process_mode = 2
+process_mode = 3
 visible = false
 custom_minimum_size = Vector2(520, 300)
 layout_mode = 1
@@ -350,11 +351,34 @@ offset_bottom = 1080.0
 [node name="Panel" parent="GameOver" index="0"]
 modulate = Color(1, 1, 1, 1)
 
+[node name="Quit" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -130.0
+offset_right = 63.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.5882353, 0.61960787, 1)
+theme_override_fonts/font = ExtResource("26_2wyq8")
+theme_override_font_sizes/font_size = 48
+text = "QUIT
+"
+flat = true
+
 [connection signal="body_entered" from="LeftArea" to="." method="body_entered"]
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Resume" to="UI/Options" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Quit" to="UI/Options" method="_on_quit_pressed"]
 [connection signal="pressed" from="GameOver/Restart" to="." method="restart"]
+[connection signal="pressed" from="GameOver/Quit" to="UI/Options" method="_on_quit_pressed"]
 
 [editable path="GameOver"]
