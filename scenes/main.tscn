@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=30 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://s8jejuk5kq1u" path="res://sprites/placeholders/placeholders/chara_date.png" id="7_a8y0u"]
 [ext_resource type="Script" uid="uid://dlojhoj0vn1gb" path="res://scripts/audio_slider.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ctwu0qej2jku2" path="res://scripts/options.gd" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://df78num2uu6rh" path="res://sprites/light.png" id="8_vxglm"]
 [ext_resource type="AudioStream" uid="uid://ccho04v8juv6h" path="res://audio/testtrack_120_verfinal.wav" id="9_og1vs"]
 [ext_resource type="AudioStream" uid="uid://cuaw3ywiet6b2" path="res://audio/arrow_shoot_sfx_alt.wav" id="10_og1vs"]
 [ext_resource type="Texture2D" uid="uid://b83141tufb0vu" path="res://sprites/Patience Meter/PM Empty.png" id="11_muem4"]
@@ -87,14 +88,16 @@ monitoring = false
 position = Vector2(430.5, 909)
 shape = SubResource("RectangleShape2D_0wfyh")
 
-[node name="ColorRect" type="ColorRect" parent="LeftArea/CollisionShape2D"]
+[node name="ColorRect" type="TextureRect" parent="LeftArea/CollisionShape2D"]
 visible = false
-modulate = Color(1, 1, 1, 0.29411766)
-offset_left = -127.0
-offset_top = -177.0
-offset_right = 129.0
-offset_bottom = 162.0
+modulate = Color(1, 1, 1, 0.627451)
+offset_left = -378.5
+offset_top = -108.0
+offset_right = 122.0
+offset_bottom = 329.0
+rotation = -0.56548667
 mouse_filter = 2
+texture = ExtResource("8_vxglm")
 
 [node name="RightArea" type="Area2D" parent="."]
 
@@ -102,13 +105,16 @@ mouse_filter = 2
 position = Vector2(1480, 913)
 shape = SubResource("RectangleShape2D_0wfyh")
 
-[node name="ColorRect" type="ColorRect" parent="RightArea/CollisionShape2D"]
-modulate = Color(1, 1, 1, 0.29411766)
-offset_left = -127.0
-offset_top = -170.71875
-offset_right = 129.0
-offset_bottom = 174.28125
+[node name="ColorRect" type="TextureRect" parent="RightArea/CollisionShape2D"]
+modulate = Color(1, 1, 1, 0.627451)
+offset_left = 82.0
+offset_top = -452.0
+offset_right = 601.0
+offset_bottom = 33.28125
+rotation = 0.6736971
 mouse_filter = 2
+texture = ExtResource("8_vxglm")
+flip_h = true
 
 [node name="MonsterManager" type="Node2D" parent="."]
 script = ExtResource("2_0wfyh")
