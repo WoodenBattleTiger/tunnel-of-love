@@ -38,26 +38,7 @@ func on_patience_timer_timeout():
 	update_patience(patience_decay_rate * -1)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.is_pressed() and event.keycode == KEY_SPACE:
-			print("flip")
-			if face_right:
-				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_left.png")
-				$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_photo_left.png")
-			else:
-				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
-				$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date.png")
-			face_right = !face_right
-			$SFXPlayer.stream = load("res://audio/flip_sfx.wav")
-			$SFXPlayer.play()
-			#$Level/Char_Date.scale.x *= -1
-			$RightArea.monitoring = !$RightArea.monitoring
-			$LeftArea.monitoring = !$LeftArea.monitoring
-			$LeftArea/CollisionShape2D/ColorRect.visible = !$LeftArea/CollisionShape2D/ColorRect.visible
-			$RightArea/CollisionShape2D/ColorRect.visible = !$RightArea/CollisionShape2D/ColorRect.visible
-			await get_tree().create_timer(1.5).timeout
-			$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player.png")
-			
+	if event is InputEventKey:			
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$UI/Options.visible = true
 			get_tree().paused = true
@@ -84,6 +65,24 @@ func spawn_arrow(dir):
 	$ShootTimer.start()
 	
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("flip"):
+		if face_right:
+			$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_left.png")
+			$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_photo_left.png")
+		else:
+			$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
+			$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date.png")
+		face_right = !face_right
+		$SFXPlayer.stream = load("res://audio/flip_sfx.wav")
+		$SFXPlayer.play()
+		#$Level/Char_Date.scale.x *= -1
+		$RightArea.monitoring = !$RightArea.monitoring
+		$LeftArea.monitoring = !$LeftArea.monitoring
+		$LeftArea/CollisionShape2D/ColorRect.visible = !$LeftArea/CollisionShape2D/ColorRect.visible
+		$RightArea/CollisionShape2D/ColorRect.visible = !$RightArea/CollisionShape2D/ColorRect.visible
+		await get_tree().create_timer(1.5).timeout
+		$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player.png")
+			
 	if get_viewport().get_mouse_position().x > get_viewport_rect().size.x / 2 && $ShootTimer.is_stopped():
 		#print("shoot right")
 		$Level/Swan_Head.texture = swan_right
