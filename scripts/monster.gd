@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	scale.x = (1.0 * (position.y / get_viewport_rect().size.y))
 	scale.y = (1.0 * (position.y / get_viewport_rect().size.y))
 	
-	velocity.y = 250
+	velocity.y = 250 + (2.0 * (position.y / get_viewport_rect().size.y))
 	velocity.x = 95 * dir
 	
 	move_and_slide()
