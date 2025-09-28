@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=85 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
@@ -61,6 +61,26 @@
 [ext_resource type="Script" uid="uid://iu63atnw2uah" path="res://scripts/ending.gd" id="30_tel4y"]
 [ext_resource type="Texture2D" uid="uid://clk3kxugut82h" path="res://bg/Comp029.png" id="31_r4ag1"]
 [ext_resource type="Texture2D" uid="uid://o4ub4epua8ly" path="res://bg/Comp030.png" id="32_v0wtd"]
+[ext_resource type="Texture2D" uid="uid://4bi1nkt85ig4" path="res://bg/Comp031.png" id="33_ndrjj"]
+[ext_resource type="Texture2D" uid="uid://d0q0uy6l165aq" path="res://bg/Comp032.png" id="34_ih3m7"]
+[ext_resource type="Texture2D" uid="uid://5dr1rohd13s3" path="res://bg/Comp033.png" id="35_11yus"]
+[ext_resource type="Texture2D" uid="uid://dpe4smjwexx0l" path="res://bg/Comp034.png" id="36_b6ruc"]
+[ext_resource type="Texture2D" uid="uid://d4kps6ywr7kbv" path="res://bg/Comp035.png" id="37_155or"]
+[ext_resource type="Texture2D" uid="uid://70o0nqjgrdi7" path="res://bg/Comp036.png" id="38_vtx2l"]
+[ext_resource type="Texture2D" uid="uid://dgw21m4miueoh" path="res://bg/Comp037.png" id="39_63lxy"]
+[ext_resource type="Texture2D" uid="uid://cvq5v5gjdaffw" path="res://bg/Comp038.png" id="40_fjhjs"]
+[ext_resource type="Texture2D" uid="uid://conqw1ewa3550" path="res://bg/Comp039.png" id="41_bfu41"]
+[ext_resource type="Texture2D" uid="uid://c2gtdiswpw5eq" path="res://bg/Comp040.png" id="42_r4ag1"]
+[ext_resource type="Texture2D" uid="uid://b74pxuplqlue3" path="res://bg/Comp041.png" id="43_v0wtd"]
+[ext_resource type="Texture2D" uid="uid://i5kvws5ns7vu" path="res://bg/Comp042.png" id="44_sgvw8"]
+[ext_resource type="Texture2D" uid="uid://ba1nsdfu4pha0" path="res://bg/Comp043.png" id="45_6nfnn"]
+[ext_resource type="Texture2D" uid="uid://wsetne4o8t5x" path="res://bg/Comp044.png" id="46_4ue30"]
+[ext_resource type="Texture2D" uid="uid://dbpdjvs3amb8e" path="res://bg/Comp045.png" id="47_k42av"]
+[ext_resource type="Texture2D" uid="uid://dy1mmrsybwccr" path="res://bg/Comp046.png" id="48_gr8w0"]
+[ext_resource type="Texture2D" uid="uid://drj8os8smlyb8" path="res://bg/Comp047.png" id="49_673bd"]
+[ext_resource type="Texture2D" uid="uid://cv7xk4v8801ss" path="res://bg/Comp048.png" id="50_akjxb"]
+[ext_resource type="Texture2D" uid="uid://deu26laq6ccrn" path="res://bg/Comp049.png" id="51_vrx01"]
+[ext_resource type="Texture2D" uid="uid://d28pod4mn5dpc" path="res://bg/Comp050.png" id="52_1uevf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sgvw8"]
 animations = [{
@@ -157,6 +177,66 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("32_v0wtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ndrjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ih3m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_11yus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_b6ruc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_155or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_vtx2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_63lxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_fjhjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_bfu41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_r4ag1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_v0wtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_sgvw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_6nfnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_4ue30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_k42av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_gr8w0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_673bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_akjxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_vrx01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_1uevf")
 }],
 "loop": true,
 "name": &"default",
@@ -202,6 +282,7 @@ position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sgvw8")
 autoplay = "default"
+frame_progress = 0.03926309
 
 [node name="BG_Walls" type="Sprite2D" parent="LevelBG"]
 visible = false
