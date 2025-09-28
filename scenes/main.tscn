@@ -377,6 +377,7 @@ flat = true
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Resume" to="UI/Options" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Restart" to="." method="restart"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Quit" to="UI/Options" method="_on_quit_pressed"]
 [connection signal="pressed" from="GameOver/Restart" to="." method="restart"]
 [connection signal="pressed" from="GameOver/Quit" to="UI/Options" method="_on_quit_pressed"]

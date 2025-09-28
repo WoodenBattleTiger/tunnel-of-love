@@ -153,18 +153,20 @@ func game_over():
 	get_tree().paused = true
 	
 func restart():
+	$UI/Options.visible = false
 	$GameOver.visible = false
 	get_tree().paused = false
 	clear_combo()
 	score = 0
+	$AudioStreamPlayer.stream = load("res://audio/testtrack_120_verfinal.wav")
+	$RhythmNotifier.bpm = 120
 	phase = 1
 	current_loop = 1
 	%Score.text = "Score: " + str(score)
-	patience = 100
+	patience = 65
 	$AudioStreamPlayer.play(0.0)
 	for child in $MonsterManager.get_children():
 		child.queue_free()
-	#TODO: need to restart dialogue
 
 
 func _on_audio_stream_player_finished() -> void:
