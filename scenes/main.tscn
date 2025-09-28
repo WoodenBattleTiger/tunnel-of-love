@@ -347,6 +347,9 @@ visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 
+[node name="Panel" parent="GameOver" index="0"]
+modulate = Color(1, 1, 1, 1)
+
 [connection signal="body_entered" from="LeftArea" to="." method="body_entered"]
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
