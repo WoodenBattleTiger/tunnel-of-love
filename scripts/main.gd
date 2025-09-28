@@ -48,6 +48,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$UI/Options.visible = true
+			var mode := DisplayServer.window_get_mode()
+			var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+			$UI/Options/MarginContainer/VBoxContainer/CheckBox.button_pressed = !is_window
 			get_tree().paused = true
 			
 func spawn_arrow(dir):
