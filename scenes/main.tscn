@@ -53,6 +53,17 @@ corner_detail = 10
 script = ExtResource("1_o5qli")
 patience_decay_rate = 0.75
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="LevelBG" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="LevelBG"]
