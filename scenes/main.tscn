@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=31 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
@@ -26,6 +26,7 @@
 [ext_resource type="FontFile" uid="uid://u1frrkgccc5x" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Regular.ttf" id="21_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://dvr7jdwhqyui" path="res://sprites/Pause Menu/Slider Button Idle.png" id="23_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://bt4qfq2jn7aks" path="res://sprites/Pause Menu/Slider Button Hover.png" id="24_vxglm"]
+[ext_resource type="Texture2D" uid="uid://bwtjae5k58pw2" path="res://sprites/Controls.png" id="26_2f3dj"]
 [ext_resource type="FontFile" uid="uid://cylphn78l5se6" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Bold.ttf" id="26_2wyq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
@@ -256,6 +257,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_yc10j")
 script = ExtResource("7_tipki")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Options"]
+layout_mode = 0
+offset_left = -610.0
+offset_top = -71.0
+offset_right = 1310.0
+offset_bottom = 1009.0
+texture = ExtResource("26_2f3dj")
 
 [node name="MusicVolume" type="Label" parent="UI/Options"]
 custom_minimum_size = Vector2(290, 0)

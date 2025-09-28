@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy2by24f60obe"]
+[gd_scene load_steps=12 format=3 uid="uid://cy2by24f60obe"]
 
 [ext_resource type="Script" uid="uid://bet82i0xmwnax" path="res://scripts/start_menu.gd" id="1_thu50"]
 [ext_resource type="FontFile" uid="uid://buho8mxtdbp3r" path="res://fonts/Gaegu-Bold.ttf" id="2_m7x51"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dy6d0swpyaewe" path="res://audio/select_sfx.wav" id="8_5byqq"]
 [ext_resource type="Script" uid="uid://dlojhoj0vn1gb" path="res://scripts/audio_slider.gd" id="8_egh8s"]
 [ext_resource type="AudioStream" uid="uid://dq2qg8fc4ewe0" path="res://audio/titletrack_ver2.wav" id="9_5byqq"]
+[ext_resource type="Texture2D" uid="uid://bwtjae5k58pw2" path="res://sprites/Controls.png" id="10_e58y3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1kog"]
 content_margin_top = 14.0
@@ -38,6 +39,12 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("10_e58y3")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
