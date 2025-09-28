@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dp4umvlwbdhue"]
+[gd_scene load_steps=34 format=3 uid="uid://dp4umvlwbdhue"]
 
 [ext_resource type="Script" uid="uid://xan02qsdu5va" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://c4qxa0vkvaoke" path="res://scripts/monster_manager.gd" id="2_0wfyh"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bt4qfq2jn7aks" path="res://sprites/Pause Menu/Slider Button Hover.png" id="24_vxglm"]
 [ext_resource type="Texture2D" uid="uid://bwtjae5k58pw2" path="res://sprites/Controls.png" id="26_2f3dj"]
 [ext_resource type="FontFile" uid="uid://cylphn78l5se6" path="res://fonts/Atkinson_Hyperlegible_Next/static/AtkinsonHyperlegibleNext-Bold.ttf" id="26_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://fvw8sg8mgjg8" path="res://sprites/Ending/1.png" id="30_fv21b"]
+[ext_resource type="Script" uid="uid://iu63atnw2uah" path="res://scripts/ending.gd" id="30_tel4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(453, 339.4375)
@@ -416,6 +418,41 @@ text = "QUIT
 "
 flat = true
 
+[node name="Ending" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("30_tel4y")
+
+[node name="TextureRect" type="TextureRect" parent="Ending"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_fv21b")
+
+[node name="Label" type="Label" parent="Ending"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -60.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 32
+text = "Press Space to Continue..."
+
 [connection signal="body_entered" from="LeftArea" to="." method="body_entered"]
 [connection signal="body_entered" from="RightArea" to="." method="body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
@@ -425,5 +462,6 @@ flat = true
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/CheckBox" to="UI/Options" method="_on_check_box_pressed"]
 [connection signal="pressed" from="GameOver/Restart" to="." method="restart"]
 [connection signal="pressed" from="GameOver/Quit" to="UI/Options" method="_on_quit_pressed"]
+[connection signal="visibility_changed" from="Ending" to="Ending" method="_on_visibility_changed"]
 
 [editable path="GameOver"]

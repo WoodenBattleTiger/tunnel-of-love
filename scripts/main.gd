@@ -208,6 +208,11 @@ func _on_audio_stream_player_finished() -> void:
 			$RhythmNotifier.bpm = 140
 			$AudioStreamPlayer.play()
 			$ShootTimer.wait_time = $RhythmNotifier.beat_length
+			
+		if phase == 4:
+			#end game
+			$Ending.visible = true
+			get_tree().paused = true
 	
 	else:
 		current_loop += 1

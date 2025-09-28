@@ -1,5 +1,7 @@
 extends Control
 	
+func _ready() -> void:
+	get_tree().paused = false
 
 func _on_start_pressed() -> void:
 	$SFXPlayer.play()
