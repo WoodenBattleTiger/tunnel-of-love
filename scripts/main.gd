@@ -33,6 +33,13 @@ func _ready() -> void:
 	$AudioStreamPlayer.play(0.0)
 	
 	r.beats(4).connect(func(count): if count != 0: $MonsterManager.spawn_monster())
+	r.beats(2).connect(off_beat)
+	
+func off_beat(count):
+	if count != 0 and count % 4 != 0:
+		var chance = randf_range(0, 1.0)
+		if chance > 0.8:
+			$MonsterManager.spawn_monster()
 	
 func on_patience_timer_timeout():
 	update_patience(patience_decay_rate * -1)
