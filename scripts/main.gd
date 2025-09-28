@@ -157,10 +157,12 @@ func update_score(val):
 func game_over():
 	$GameOver.visible = true
 	get_tree().paused = true
+	$GameOverMusic.play()
 	
 func restart():
 	$UI/Options.visible = false
 	$GameOver.visible = false
+	$GameOverMusic.stop()
 	get_tree().paused = false
 	clear_combo()
 	score = 0
