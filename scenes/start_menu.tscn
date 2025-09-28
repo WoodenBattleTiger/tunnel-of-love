@@ -189,6 +189,13 @@ value = 1.0
 script = ExtResource("8_egh8s")
 bus_name = "music"
 
+[node name="CheckBox" type="CheckBox" parent="Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m7x51")
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen?"
+
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5byqq")
 bus = &"music"
@@ -203,3 +210,4 @@ bus = &"music"
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Options/MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_pressed"]

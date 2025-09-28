@@ -20,3 +20,9 @@ func _on_quit_pressed() -> void:
 func _on_settings_pressed() -> void:
 	$SFXPlayer.play()
 	$Options.visible = true
+
+
+func _on_check_box_pressed() -> void:
+	var mode := DisplayServer.window_get_mode()
+	var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)

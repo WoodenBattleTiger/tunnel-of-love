@@ -369,6 +369,13 @@ value = 1.0
 script = ExtResource("7_o6xl0")
 bus_name = "music"
 
+[node name="CheckBox" type="CheckBox" parent="UI/Options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("20_jscy8")
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen?"
+
 [node name="GameOver" parent="." instance=ExtResource("5_tbgi4")]
 visible = false
 offset_right = 1920.0
@@ -415,6 +422,7 @@ flat = true
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Resume" to="UI/Options" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Restart" to="." method="restart"]
 [connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/Quit" to="UI/Options" method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/Options/MarginContainer/VBoxContainer/CheckBox" to="UI/Options" method="_on_check_box_pressed"]
 [connection signal="pressed" from="GameOver/Restart" to="." method="restart"]
 [connection signal="pressed" from="GameOver/Quit" to="UI/Options" method="_on_quit_pressed"]
 
