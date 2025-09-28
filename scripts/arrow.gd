@@ -1,7 +1,7 @@
 extends Node2D
 
 var dir = 1
-@export var speed = 10
+@export var speed = 15
 
 signal update_combo
 signal clear_combo

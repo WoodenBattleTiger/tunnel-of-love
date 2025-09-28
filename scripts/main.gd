@@ -38,27 +38,17 @@ func on_patience_timer_timeout():
 	update_patience(patience_decay_rate * -1)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:			
+	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			$UI/Options.visible = true
 			get_tree().paused = true
-	if event.is_action_pressed("shoot") && $ShootTimer.is_stopped():
-		if get_viewport().get_mouse_position().x > get_viewport_rect().size.x / 2:
-			spawn_arrow(1)
-			print("shoot right")
-			$Level/Swan_Head.texture = swan_right_shoot
-		else:
-			spawn_arrow(-1)
-			print("shoot left")
-			$Level/Swan_Head.texture = swan_left_shoot
-		$SFXPlayer.stream = load("res://audio/arrow_shoot_sfx_alt.wav")
-		$SFXPlayer.play()
 			
 func spawn_arrow(dir):
 	var new_arrow = load("res://scenes/arrow.tscn").instantiate()
 	new_arrow.dir = dir
 	new_arrow.position.x = get_viewport_rect().size.x / 2
 	new_arrow.position.y = get_viewport_rect().size.y / 2
+	new_arrow.scale.x *= -dir
 	new_arrow.connect("update_combo", update_combo)
 	new_arrow.connect("clear_combo", clear_combo)
 	$BulletManager.add_child(new_arrow)
