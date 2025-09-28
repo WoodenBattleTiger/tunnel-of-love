@@ -1,0 +1,106 @@
+[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://co3wmrkvdev17"]
+
+[ext_resource type="Texture2D" uid="uid://ehdlllpu5ii4" path="res://image sequences/bloons0000.png" id="1_7f7qh"]
+[ext_resource type="Texture2D" uid="uid://bwywku71vq1tx" path="res://image sequences/bloons0001.png" id="2_dbo7d"]
+[ext_resource type="Texture2D" uid="uid://dwkshvgk4d8lt" path="res://image sequences/bloons0002.png" id="3_kepmm"]
+[ext_resource type="Texture2D" uid="uid://d0ufcqq77wnmr" path="res://image sequences/bloons0003.png" id="4_cmlkv"]
+[ext_resource type="Texture2D" uid="uid://dfo1ywrborb77" path="res://image sequences/bloons0004.png" id="5_6jvyq"]
+[ext_resource type="Texture2D" uid="uid://5mlwi3715itj" path="res://image sequences/bloons0005.png" id="6_tlhho"]
+[ext_resource type="Texture2D" uid="uid://cq3ehwi03thnw" path="res://image sequences/bloons0006.png" id="7_5obuc"]
+[ext_resource type="Texture2D" uid="uid://b08riou87r2ky" path="res://image sequences/bloons0007.png" id="8_d8nk2"]
+[ext_resource type="Texture2D" uid="uid://bjap34rhsa637" path="res://image sequences/bloons0008.png" id="9_vedvb"]
+[ext_resource type="Texture2D" uid="uid://bot73ifht6u6x" path="res://image sequences/bloons0009.png" id="10_oe0an"]
+[ext_resource type="Texture2D" uid="uid://47182km0pylf" path="res://image sequences/bloons0010.png" id="11_tkjv1"]
+[ext_resource type="Texture2D" uid="uid://casgb3ylul2qw" path="res://image sequences/bloons0011.png" id="12_7li53"]
+[ext_resource type="Texture2D" uid="uid://ccr0nu05bopfj" path="res://image sequences/bloons0012.png" id="13_4jk8b"]
+[ext_resource type="Texture2D" uid="uid://bt8y026xh73h0" path="res://image sequences/bloons0013.png" id="14_l8gcl"]
+[ext_resource type="Texture2D" uid="uid://dil5mt2xoqgoi" path="res://image sequences/bloons0014.png" id="15_h34l6"]
+[ext_resource type="Texture2D" uid="uid://dhj4eqowqd4n6" path="res://image sequences/bloons0015.png" id="16_b4xv1"]
+[ext_resource type="Texture2D" uid="uid://cb2opig63fj3d" path="res://image sequences/bloons0016.png" id="17_lhj5s"]
+[ext_resource type="Texture2D" uid="uid://cj130rx55nf8v" path="res://image sequences/bloons0017.png" id="18_dt6mg"]
+[ext_resource type="Texture2D" uid="uid://b7y02465noa2i" path="res://image sequences/bloons0018.png" id="19_17iy2"]
+[ext_resource type="Texture2D" uid="uid://d2cche62x3hyy" path="res://image sequences/bloons0019.png" id="20_0ijp4"]
+[ext_resource type="Texture2D" uid="uid://bdil5yexdv71g" path="res://image sequences/bloons0020.png" id="21_8r455"]
+[ext_resource type="Texture2D" uid="uid://bxpejnifh8a6m" path="res://image sequences/bloons0021.png" id="22_1ghp4"]
+[ext_resource type="Texture2D" uid="uid://otabpgjxl4v7" path="res://image sequences/bloons0022.png" id="23_dfcw5"]
+[ext_resource type="Texture2D" uid="uid://b0aoq5ho42hxn" path="res://image sequences/bloons0023.png" id="24_x53ko"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7f7qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dbo7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kepmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cmlkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6jvyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tlhho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5obuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d8nk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vedvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oe0an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tkjv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7li53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4jk8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_l8gcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h34l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_b4xv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lhj5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dt6mg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_17iy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0ijp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8r455")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1ghp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dfcw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_x53ko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]

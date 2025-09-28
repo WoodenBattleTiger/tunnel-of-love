@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://6e5686f13hlt"]
+
+[ext_resource type="SpriteFrames" uid="uid://bdr13eb2keivd" path="res://animations/raccoon.tres" id="1_rqyey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48f0b"]
+size = Vector2(268, 250.5)
+
+[sub_resource type="Animation" id="Animation_rqyey"]
+resource_name = "distraction"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatableBody2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(824, 352), Vector2(248, 968)]
+}
+
+[sub_resource type="Animation" id="Animation_huxmp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AnimatableBody2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(824, 352)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huxmp"]
+_data = {
+&"RESET": SubResource("Animation_huxmp"),
+&"distraction": SubResource("Animation_rqyey")
+}
+
+[node name="Distraction" type="Node2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("1_rqyey")
+autoplay = "default"
+frame = 13
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Sprite2D"]
+position = Vector2(-1920, -1080)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AnimatableBody2D"]
+position = Vector2(824, 352)
+shape = SubResource("RectangleShape2D_48f0b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_huxmp")
+}
