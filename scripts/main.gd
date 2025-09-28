@@ -82,6 +82,22 @@ func _process(_delta: float) -> void:
 		$RightArea/CollisionShape2D/ColorRect.visible = !$RightArea/CollisionShape2D/ColorRect.visible
 		await get_tree().create_timer(1.5).timeout
 		$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player.png")
+	
+	if Input.is_action_just_pressed("shoot_left") && $ShootTimer.is_stopped():
+		spawn_arrow(-1)
+		print("shoot left")
+		$Level/Swan_Head.texture = swan_left_shoot
+		$SFXPlayer.stream = load("res://audio/arrow_shoot_sfx_alt.wav")
+		$SFXPlayer.play()
+	
+	if Input.is_action_just_pressed("shoot_right") && $ShootTimer.is_stopped():
+		spawn_arrow(1)
+		print("shoot right")
+		$Level/Swan_Head.texture = swan_right_shoot
+		$SFXPlayer.stream = load("res://audio/arrow_shoot_sfx_alt.wav")
+		$SFXPlayer.play()
+	
+	
 			
 	if get_viewport().get_mouse_position().x > get_viewport_rect().size.x / 2 && $ShootTimer.is_stopped():
 		#print("shoot right")
