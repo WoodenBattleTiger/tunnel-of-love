@@ -121,7 +121,7 @@ bus = &"music"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_og1vs")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"sfx"
 
 [node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]

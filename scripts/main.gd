@@ -30,10 +30,6 @@ func _ready() -> void:
 	$PatienceTimer.connect("timeout", on_patience_timer_timeout)
 	%Patience.value = patience
 	
-	var resource = load("res://dialogue/test.dialogue")
-	get_tree().paused = true
-	await DialogueManager.show_dialogue_balloon(resource, "start").tree_exited
-	get_tree().paused = false
 	$AudioStreamPlayer.play(0.0)
 	
 	r.beats(4).connect(func(count): if count != 0: $MonsterManager.spawn_monster())
@@ -52,6 +48,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				$Level/Char_Player.texture = load("res://sprites/placeholders/placeholders/chara_player_point_right.png")
 				$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date.png")
 			face_right = !face_right
+			$SFXPlayer.stream = load("res://audio/flip_sfx.wav")
+			$SFXPlayer.play()
 			#$Level/Char_Date.scale.x *= -1
 			$RightArea.monitoring = !$RightArea.monitoring
 			$LeftArea.monitoring = !$LeftArea.monitoring
@@ -72,6 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			spawn_arrow(-1)
 			print("shoot left")
 			$Level/Swan_Head.texture = swan_left_shoot
+		$SFXPlayer.stream = load("res://audio/arrow_shoot_sfx_alt.wav")
 		$SFXPlayer.play()
 			
 func spawn_arrow(dir):
@@ -99,6 +98,8 @@ func body_entered(body:Node2D):
 			if body.type == body.Type.MONSTER:
 				update_patience(-1 * monster_patience_penalty)
 				body.collected = true
+				$SFXPlayer.stream = load("res://audio/hurt_sfx.wav")
+				$SFXPlayer.play()
 				if face_right:
 					$Level/Char_Date.texture = load("res://sprites/placeholders/placeholders/chara_date_shock_right.png")
 					await get_tree().create_timer(1.0, false).timeout
@@ -133,6 +134,8 @@ func update_patience(val):
 	%Patience.value = patience
 	
 func update_combo(val):
+	$SFXPlayer.stream = load("res://audio/hit_sfx.wav")
+	$SFXPlayer.play()
 	combo += val
 	%Combo.text = str(combo)
 	
@@ -141,6 +144,8 @@ func clear_combo():
 	%Combo.text = str(combo)
 	
 func update_score(val):
+	$SFXPlayer.stream = load("res://audio/success_sfx.wav")
+	$SFXPlayer.play()
 	score += val * combo
 	%Score.text = str(score) + " pts"
 	
